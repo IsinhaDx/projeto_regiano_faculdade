@@ -15,7 +15,7 @@ export default function Login() {
         });
         if (res.ok) {
             const data = await res.json();
-            login(data.token);
+            login(data.token, data.user);
             navigate('/dashboard');
         } else {
             alert('Falha no login');
