@@ -25,4 +25,4 @@
 - **Fator de Ajuste (VFA):** 0.72 (Usabilidade 3, Desempenho 2, Processamento 2)
 - **Tamanho Ajustado (PFA):** 103.68 PFA
 - **Esforço Estimado:** 207.36 horas (2h / PF)
-- **Orçamento Estimado:** R$ 10.368,00 (R$ 50,00 / hora)
+- **Orçamento Estimado:** R$ 20.736,00 (R$ 100,00 / hora)
