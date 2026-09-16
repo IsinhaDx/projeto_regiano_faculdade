@@ -1,0 +1,42 @@
+:global(*) { box-sizing: border-box; }
+
+.shell { min-height: 100vh; display: flex; background: #f6f8fb; color: #172033; }
+.sidebar { width: 260px; min-width: 260px; min-height: 100vh; background: #fff; border-right: 1px solid #e8ecf2; padding: 22px 16px; display: flex; flex-direction: column; position: sticky; top: 0; height: 100vh; z-index: 20; }
+.brand { display: flex; align-items: center; gap: 11px; padding: 4px 8px 25px; border-bottom: 1px solid #edf0f4; }
+.brandMark { width: 38px; height: 38px; border-radius: 11px; background: #2563eb; color: #fff; display: grid; place-items: center; font-size: 19px; font-weight: 800; }
+.brand strong { display: block; font-size: 17px; letter-spacing: -.02em; }
+.brand span { display: block; margin-top: 2px; color: #8a93a3; font-size: 11px; }
+.closeButton { display: none; margin-left: auto; border: 0; background: transparent; color: #697386; cursor: pointer; }
+.closeButton svg, .menuButton svg { width: 21px; height: 21px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+.user { display: flex; gap: 11px; align-items: center; padding: 19px 8px; }
+.avatar { width: 42px; height: 42px; flex: 0 0 42px; border-radius: 50%; background: #e8f0ff; color: #2563eb; display: grid; place-items: center; font-weight: 800; font-size: 14px; }
+.userInfo { min-width: 0; }
+.userInfo strong { display: block; font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.userInfo span { display: block; margin-top: 3px; color: #8a93a3; font-size: 11px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+.nav { display: flex; flex-direction: column; gap: 5px; }
+.sectionLabel { padding: 7px 11px 8px; color: #9aa2b1; font-size: 10px; font-weight: 800; letter-spacing: .09em; }
+.navItem { display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 0 12px; border-radius: 9px; color: #667085; text-decoration: none; font-size: 13px; font-weight: 600; transition: .15s ease; }
+.navItem svg { width: 19px; height: 19px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.navItem:hover { background: #f5f7fa; color: #1f2937; }
+.navItem.active { background: #edf3ff; color: #2563eb; }
+.logout { margin-top: auto; display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 0 12px; border: 0; border-radius: 9px; background: transparent; color: #667085; font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; text-align: left; }
+.logout:hover { background: #fff1f1; color: #dc3545; }
+.logout svg { width: 19px; height: 19px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+.main { flex: 1; min-width: 0; }
+.content { max-width: 1280px; margin: 0 auto; padding: 36px 42px; }
+.mobileHeader { display: none; }
+
+.overlay { display: none; }
+
+@media (max-width: 760px) {
+    .sidebar { position: fixed; left: 0; transform: translateX(-100%); transition: transform .2s ease; box-shadow: 10px 0 35px rgba(0,0,0,.08); }
+    .sidebarOpen { transform: translateX(0); }
+    .closeButton { display: block; }
+    .overlay { display: block; position: fixed; inset: 0; border: 0; background: rgba(15,23,42,.25); z-index: 10; }
+    .mobileHeader { height: 60px; display: flex; align-items: center; gap: 13px; padding: 0 18px; background: #fff; border-bottom: 1px solid #e8ecf2; }
+    .menuButton { display: grid; place-items: center; border: 0; background: transparent; color: #344054; cursor: pointer; }
+    .content { padding: 24px 18px; }
+}

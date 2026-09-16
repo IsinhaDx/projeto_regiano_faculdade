@@ -2,15 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import styles from '../styles/Pages.module.css';
-const isValidCPF = (cpf: string) => {
-    cpf = cpf.replace(/[^\d]+/g, '');
-    if(cpf.length !== 11 || /^(\d)\1{10}$/.test(cpf)) return false;
-    let add = 0; for (let i = 0; i < 9; i ++) add += parseInt(cpf.charAt(i)) * (10 - i);
-    let rev = 11 - (add % 11); if (rev === 10 || rev === 11) rev = 0; if (rev !== parseInt(cpf.charAt(9))) return false;
-    add = 0; for (let i = 0; i < 10; i ++) add += parseInt(cpf.charAt(i)) * (11 - i);
-    rev = 11 - (add % 11); if (rev === 10 || rev === 11) rev = 0;
-    return rev === parseInt(cpf.charAt(10));
+
+const isValidCPF = (cpf: string): boolean => {
+    const cleanCPF = cpf.replace(/\D/g, '');
+    return /^\d{11}$/.test(cleanCPF);
 };
+
 export default function Participants() {
     const { token } = useAuth();
     const navigate = useNavigate();

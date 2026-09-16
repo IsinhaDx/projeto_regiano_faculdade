@@ -2,6 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import styles from '../styles/Pages.module.css';
+
+const isValidCep = (cpf: string): boolean => {
+    const cleanCPF = cpf.replace(/\D/g, '');
+
+    return /^\d{8}$/.test(cleanCPF);
+};
+
 export default function Events() {
     const { token } = useAuth();
     const navigate = useNavigate();
@@ -25,6 +32,7 @@ export default function Events() {
     };
     const handleSubmit = async (e: any) => {
         e.preventDefault();
+        if (!isValidCep(formData.zip_code)) return alert('CEP Inválido')
         const method = formData.id ? 'PUT' : 'POST';
         const url = formData.id ? `http://localhost:3001/api/events/${formData.id}` : 'http://localhost:3001/api/events';
         await fetch(url, { method, headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token }, body: JSON.stringify(formData) });
